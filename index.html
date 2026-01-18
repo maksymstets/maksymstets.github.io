@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maksym Stets - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .skip-links {
+            position: absolute;
+            left: -9999px;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('dna-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .profile-image {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 4px solid #f0f0f0;
+        }
+
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .sidebar p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            list-style: none;
+        }
+
+        .social-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        .social-links a::before {
+            content: "▸";
+            color: #3498db;
+        }
+
+        .main-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .main-content h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-content h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .main-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-content li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+        }
+
+        .toc h4 {
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .publication {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-links">Skip to content</a>
+    
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">~></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="maksym-photo.jpg" alt="Maksym Stets" class="profile-image">
+            <h3>Maksym Stets</h3>
+            <p>Molecular biologist and biotechnologist, passionate about bioinformatics and computational biology.</p>
+            
+            <h4 style="margin-bottom: 0.8rem; color: #2c3e50;">Follow</h4>
+            <ul class="social-links">
+                <li><a href="#">Lviv, Ukraine</a></li>
+                <li><a href="https://github.com/maksymstets">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/maksym-stets">LinkedIn</a></li>
+                <li><a href="mailto:stecmaxim@gmail.com">Email</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content" id="main">
+            <h1>About Me</h1>
+
+            <div class="toc">
+                <h4>On this page</h4>
+                <ul>
+                    <li><a href="#who">Who am I?</a></li>
+                    <li><a href="#bio">Short bio</a></li>
+                    <li><a href="#experience">Professional Experience</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                </ul>
+            </div>
+
+            <h2 id="who">Who am I?</h2>
+            <p>My name is Maksym Stets and I'm a driven PhD researcher with deep background in biotech and molecular sciences looking to transition into a career focused on bioinformatics. I'm passionate about using computational tools to solve biological problems and advance biotechnology.</p>
+
+            <h2 id="bio">Short bio</h2>
+            <p>I recently completed my Master's degree in Biology with a specialization in Biochemistry from Ivan Franko National University of Lviv in December 2022. Throughout my undergraduate and graduate studies, I specialized in molecular biology and gained a comprehensive understanding of biochemical processes, particularly in yeast genetics and protein degradation mechanisms.</p>
+
+            <p>Currently, I am pursuing my PhD at Lviv Polytechnic National University's Institute of Chemistry and Chemical Technologies, focusing on Biotechnologies and Bioengineering (expected completion: September 2027).</p>
+
+            <p>During my academic journey, I have gained extensive laboratory experience including yeast and bacteria culturing, DNA and protein isolation, PCR, Western blotting, gel electrophoresis, and enzyme activity assays. My professional experience includes work at PRJSC ENZYM COMPANY, where I developed new biotechnology products, managed pilot line operations, and worked on fermentation processes and enzymatic hydrolysis.</p>
+
+            <p>I have also expanded my skills in bioinformatics and computational biology through courses including <a href="https://certificates.cs50.io/0979ab46-1323-4f69-948e-cc13d102b69c.png?size=letter" target="_blank" style="color: #3498db;">Harvard's CS50 Introduction to Programming with Python</a> (January 2026), <a href="http://lifesciencescourse.org/en/certificates-search?code=1019830446" target="_blank" style="color: #3498db;">Introduction to R and RNA Sequencing</a> from LifeSciences Course (April 2025), and <a href="https://coursera.org/share/eac4cf0297fa62b8fa0602c57f004ab9" target="_blank" style="color: #3498db;">Introduction to Industrial Bioprocess Development</a> from Technical University of Denmark via Coursera (February 2024). 
+                These courses have equipped me with foundational programming skills and bioinformatics techniques essential for analyzing biological data.</p>
+            
+                <h2 id="experience">Professional Experience</h2>
+
+            <h3>Operator of the Food Production Line (Sep 2024 - Apr 2025)</h3>
+            <p><strong>LLC LINKCELL - Production Department</strong></p>
+            <p>Handled production equipment safely and maintained detailed production journals. Communicated with technical specialists during production launches and troubleshooting.</p>
+
+            <h3>Junior Technologist - New Products (Feb 2023 - Aug 2024)</h3>
+            <p><strong>PRJSC ENZYM COMPANY - R&D Lab</strong></p>
+            <p>Developed new products and improved existing formulations in the biotechnology sector. Key responsibilities included:</p>
+            <ul>
+                <li>Ensuring uninterrupted pilot line operations and coordinating worker training</li>
+                <li>Participating in production recipe development and up-scaling with engineering teams</li>
+                <li>Managing laboratory equipment selection and coordinating with foreign designers</li>
+                <li>Facilitating technology transfer with partner researchers from allied companies</li>
+            </ul>
+
+            <h3>Researcher - Fermentation Processes (Dec 2021 - Jan 2023)</h3>
+            <p><strong>PRJSC ENZYM COMPANY - R&D Lab</strong></p>
+            <p>Processed and developed microbial cultivation and enzymatic hydrolysis processes on pilot line. Measured biochemical characteristics of yeast including glutathione, extracellular ethanol, and protein content. Prepared reports and occasionally substituted for superiors in higher-level duties.</p>
+
+            <h3>Undergraduate Student Researcher (Sep 2019 - Dec 2022)</h3>
+            <p><strong>Institute of Cell Biology, National Academy of Sciences of Ukraine</strong></p>
+            <p>Conducted experiments using yeast and bacteria isolation, DNA isolation, REMI mutagenesis, and PCR techniques. Performed plasmid construction, fluorescent microscopy, and enzyme activity assays. Maintained laboratory equipment and prepared research progress reports.</p>
+
+            <h2 id="research">Research</h2>
+
+            <h3>PhD Research Project (Current)</h3>
+            <p><strong>Biotechnologies and Bioengineering</strong></p>
+            <p>Currently pursuing doctoral research at Lviv Polytechnic National University, Institute of Chemistry and Chemical Technologies, focusing on advanced biotechnology applications and bioengineering processes.</p>
+
+            <h3>Master's Thesis (2022)</h3>
+            <p><strong>Identification of genes involved in degradation of cytosol proteins in methylotrophic yeast Komagataella phaffii</strong></p>
+            <p>The aim of this work was to obtain recombinant strains of methylotrophic yeast K. phaffii with impaired degradation of cytosolic proteins and analyze the genome of these strains to identify genes that affect the autophagy process.</p>
+
+            <h3>Bachelor's Thesis (2021)</h3>
+            <p><strong>Obtaining and analysis of recombinant strains Komagataella phaffii yeast with disrupted degradation of cytoplasmic proteins</strong></p>
+            <p>This project involved creating and characterizing genetically modified yeast strains to better understand protein degradation pathways in yeast.</p>
+
+            <h2 id="publications">Publications & Presentations</h2>
+
+            <h3>Peer-Reviewed Publications</h3>
+
+            <div class="publication">
+                <p><strong>Stets, M. H.</strong>, Havryliak, V. V. Lupin proteins: composition, extraction technologies, and functional properties for sustainable applications. <em>Letters in Applied NanoBioScience</em> (Manuscript under review).</p>
+            </div>
+
+            <div class="publication">
+                <p><strong>Stets, M. H.</strong>, Yerokhin, V. A., Havryliak, V. V., Lubenets, V., & Pilarczyk, B. (2025). Effect of downstream processing on content of glutathione and cell viability during production of inactive dry yeast. <em>Chemistry, Technology and Application of Substances</em>, 8(1), 134–138. <a href="https://doi.org/10.23939/ctas2025.01.134" target="_blank">https://doi.org/10.23939/ctas2025.01.134</a></p>
+            </div>
+
+            <div class="publication">
+                <p>Zazulya, A. Z., Semkiv, M. V., <strong>Stets, M.</strong>, Cyske, Z., Gaffke, L., Pierzynowska, K., Wegrzyn, G., & Sibirny, A. A. (2023). The Komagatella phaffii ACG1 gene, encoding β-1,6-N-acetylglucosaminyltransferase, is involved in the autophagy of cytosolic and peroxisomal proteins. <em>Yeast</em>, 40(8), 367–376. <a href="https://doi.org/10.1002/yea.3846" target="_blank">https://doi.org/10.1002/yea.3846</a></p>
+            </div>
+
+            <div class="publication">
+                <p>Yerokhin, V., & <strong>Stets, M.</strong> (2024). Integration of biotechnology into the circular economy. <em>Biota. Human. Technology</em>, 2, 90-98. <a href="https://doi.org/10.58407/bht.2.24.8" target="_blank">https://doi.org/10.58407/bht.2.24.8</a></p>
+            </div>
+
+            <h3>Conference Presentations</h3>
+
+            <div class="publication">
+                <p><strong>Stets, M. H.</strong>, Havryliak, V. V. Lentil (Lens culinaris) and lupin (Lupinus spp.) proteins as a promising products of modern biotechnology. <em>V International Scientific and Practical Conference 'Problems and Achievements of Modern Biotechnology 2025'</em>.</p>
+            </div>
+
+            <div class="publication">
+                <p><strong>Stets, M. H.</strong>, Havryliak, V. V. The potential of lupin proteins in the food industry. <em>International Scientific Conference 'Current Issues in Biotechnology, Ecology and Environmental Management 2025'</em>.</p>
+            </div>
+
+            <div class="publication">
+                <p><strong>Stets, M. H.</strong>, Havryliak, V. V. Glutathione as a valuable component in biotechnology. <em>International Scientific Conference 'Current Issues of Biotechnology, Ecology and Natural Use 2024'</em>.</p>
+            </div>
+
+            <div class="publication">
+                <p><strong>Stets, M.</strong>, Politylo, O., Pynyaha, Y., Kostiv, I. Effect of different conditions on strain YI-3 properties. <em>III International Scientific and Practical Internet Conference 'Problems and Achievements of Modern Biotechnology 2023'</em>.</p>
+            </div>
+
+            <p style="margin-top: 2rem;">For more detailed information about my skills and experience, please feel free to reach out via <a href="mailto:stecmaxim@gmail.com">email</a> or connect with me on <a href="https://www.linkedin.com/in/maksym-stets">LinkedIn</a>.</p>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Maksym Stets. Built with HTML & CSS</p>
+    </footer>
+</body>
+</html>
